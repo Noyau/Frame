@@ -13,6 +13,8 @@ struct Viewport
 
     float GetRatio() const;
 
+    void Resize(size_t w, size_t h);
+
     size_t m_X;
     size_t m_Y;
     size_t m_Width;

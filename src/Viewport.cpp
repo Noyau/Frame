@@ -23,6 +23,12 @@ float Viewport::GetRatio() const
     return m_Width / static_cast<float>(m_Height);
 }
 
+void Viewport::Resize(size_t w, size_t h)
+{
+    m_Width = w;
+    m_Height = h;
+}
+
 Viewport& Viewport::operator=(const Viewport& other)
 {
     m_X = other.m_X;
