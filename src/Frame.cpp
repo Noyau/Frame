@@ -12,11 +12,9 @@ static void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
 // FRAME
 /////////////////////////////////////////////////
 Frame::Frame(size_t width, size_t height, const std::string& title)
-    : m_Window{ nullptr }
-    , m_Viewport{ width,height }
+    : m_Window{ m_Window = glfwCreateWindow(static_cast<int>(width), static_cast<int>(height), title.c_str(), nullptr, nullptr) }
+    , m_Camera{ width,height }
 {
-    m_Window = glfwCreateWindow(static_cast<int>(width), static_cast<int>(height), title.c_str(), nullptr, nullptr);
-
     if (m_Window != nullptr)
     {
         glfwMakeContextCurrent(m_Window);
@@ -46,30 +44,7 @@ void Frame::Run()
         OnUpdate(dt);
 
         // Rendering
-        glClearColor(.1f, .1f, .2f, 1.f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        { // viewport
-            glViewport(m_Viewport.m_X, m_Viewport.m_Y, m_Viewport.m_Width, m_Viewport.m_Height);
-        }
-
-        { // projection
-            GLdouble r{ .5 * m_Viewport.m_Width };
-            GLdouble t{ .5 * m_Viewport.m_Height };
-            GLdouble l{ -r };
-            GLdouble b{ -t };
-
-            glMatrixMode(GL_PROJECTION);
-            glLoadIdentity();
-            glOrtho(l, r, b, t, m_NearClip, m_FarClip);
-        }
-
-        { // models
-            glMatrixMode(GL_MODELVIEW);
-            glLoadIdentity();
-
-            OnRender();
-        }
+        m_Camera.Render();
 
         glfwSwapBuffers(m_Window);
         glfwPollEvents();
@@ -78,10 +53,9 @@ void Frame::Run()
 
 ///////////////////////////////////////
 // FRAME CALLBACKS
-void Frame::OnResize(size_t w, size_t h)
+void Frame::OnResize(size_t width, size_t height)
 {
-    m_Viewport.m_Width = w;
-    m_Viewport.m_Height = h;
+    m_Camera.Resize(width, height);
 }
 
 ///////////////////////////////////////

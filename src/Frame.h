@@ -2,6 +2,7 @@
 
 #include <string>
 
+#include "Camera.h"
 #include "Viewport.h"
 
 struct GLFWwindow;
@@ -22,7 +23,7 @@ public:
     void Run();
 
     // Callbacks
-    virtual void OnResize(size_t w, size_t h);
+    virtual void OnResize(size_t width, size_t height);
 
 protected:
     // Update
@@ -31,7 +32,5 @@ protected:
 
 protected:
     GLFWwindow* m_Window;
-    float m_NearClip{ 1e-3f };
-    float m_FarClip{ 1e+4f };
-    Viewport m_Viewport;
+    Camera m_Camera;
 };
