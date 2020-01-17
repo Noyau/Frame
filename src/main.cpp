@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 
-#include <gl/glew.h>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include "Frame.h"

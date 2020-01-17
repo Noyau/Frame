@@ -3,7 +3,6 @@
 #include <string>
 
 #include "Camera.h"
-#include "Viewport.h"
 
 struct GLFWwindow;
 
