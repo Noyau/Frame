@@ -4,7 +4,7 @@
 // VIEWPORT
 /////////////////////////////////////////////////
 Viewport::Viewport(size_t width, size_t height)
-    :Viewport(0, 0, width, height)
+    : Viewport(0, 0, width, height)
 {}
 
 Viewport::Viewport(size_t x, size_t y, size_t width, size_t height)

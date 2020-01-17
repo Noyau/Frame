@@ -157,6 +157,7 @@
     <ClInclude Include="src\Color.h" />
     <ClInclude Include="src\Frame.h" />
     <ClInclude Include="src\FrameFactory.h" />
+    <ClInclude Include="src\IRenderable.h" />
     <ClInclude Include="src\Viewport.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
